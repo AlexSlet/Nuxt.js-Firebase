@@ -3,7 +3,7 @@
         <section class="post">
             <h1 class="post-title">{{ loadedPost.title }}</h1>
             <div class="post-details">
-                <img :src="loadedPost.thumbnail" alt="image">
+                <img :src="loadedPost.imageUrl" alt="image">
                 <div class="post-detail">Lats updated on {{ loadedPost.updatedDate | date}}</div>
                 <div class="post-detail">Written by {{ loadedPost.author }}</div>
             </div>

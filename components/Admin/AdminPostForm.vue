@@ -6,7 +6,7 @@
                 
         <div>
             <h4>Thumbnail</h4>
-            <img style="width: 100%;" :src="imageUrl">
+            <img style="width: 100%;" :src="editedPost.imageUrl ? editedPost.imageUrl : imageUrl">
             <input type="file" accept="image/*" @change="onFilePiked">
         </div>
                 
@@ -42,7 +42,6 @@ export default {
             editedPost: this.post ? { ...this.post } : {
                 author: '',
                 title: '',
-                thumbnail: '',
                 content: '',
                 previewText: '',
                 image: ''

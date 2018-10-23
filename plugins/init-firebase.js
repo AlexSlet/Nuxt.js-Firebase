@@ -7,7 +7,7 @@ if (!firebase.apps.length) {
     authDomain: "nuxt-blog-69de4.firebaseapp.com",
     databaseURL: "https://nuxt-blog-69de4.firebaseio.com",
     projectId: "nuxt-blog-69de4",
-    storageBucket: "nuxt-blog-69de4.appspot.com",
+    storageBucket: "gs://nuxt-blog-69de4.appspot.com",
     messagingSenderId: "85432884365" 
   })
 }

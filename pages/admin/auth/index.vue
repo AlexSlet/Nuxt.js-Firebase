@@ -1,15 +1,10 @@
 <template>
   <div class="admin-auth-page">
     <div class="auth-container">
-      <form @submit.prevent="onSubmit">
-        <AppControlInput type="email" v-model="email">E-Mail Address</AppControlInput>
-        <AppControlInput type="password" v-model="pass">Password</AppControlInput>
-        <AppButton type="submit">{{ isLogin ? 'Login' : 'Sign Up' }}</AppButton>
-        <AppButton
-          type="button"
-          btn-style="inverted"
-          style="margin-left: 10px"
-          @click="isLogin = !isLogin">Switch to {{ isLogin ? 'Signup' : 'Login' }}</AppButton>
+      <form v-on:submit.prevent="">
+        <AppControlInput type="email" v-model="email" @change="validateEmail">E-Mail Address</AppControlInput>
+        <AppControlInput type="password" v-model="pass" @change="validatePassword">Password</AppControlInput>
+        <AppButton @click="sendForm" type="submit">Login</AppButton>
       </form>
     </div>
   </div>
@@ -29,14 +24,29 @@ export default {
     }
   },
   methods: {
+    validateEmail(){
+      let re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(this.email.toLowerCase());
+    },
+    validatePassword(){
+      return this.pass.length >= 6
+    },
     onSubmit(){
-      this.$store.dispatch('authUser', {
-        isLogin: this.isLogin,
-        email: this.email,
-        pass: this.pass
-      }).then(() => {
-        this.$router.push('/admin');
-      })
+      if(this.validateEmail() && this.validatePassword()){
+        this.$store.dispatch('authUser', {
+          isLogin: this.isLogin,
+          email: this.email,
+          pass: this.pass
+        }).then(() => {
+          this.$router.push('/admin');
+        })
+      }
+      else {
+        alert('Please, enter correct email and password');
+      }
+    },
+    sendForm(){
+      this.onSubmit();
     }
   }
 }

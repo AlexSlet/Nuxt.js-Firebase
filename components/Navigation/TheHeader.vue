@@ -10,7 +10,8 @@
       <ul class="nav-list">
         <li class="nav-item"><nuxt-link to="/posts">Blog</nuxt-link></li>
         <li class="nav-item"><nuxt-link to="/about">About</nuxt-link></li>
-        <li class="nav-item"><nuxt-link to="/admin">Admin</nuxt-link></li>
+        <li v-if="isAdmin" class="nav-item"><nuxt-link to="/admin">Admin</nuxt-link></li>
+        <li v-else class="nav-item"><nuxt-link to="/admin/auth">Log In</nuxt-link></li>
       </ul>
     </div>
   </header>
@@ -24,6 +25,11 @@ export default {
   name: "TheHeader",
   components: {
     TheSideNavToggle
+  },
+  computed: {
+    isAdmin(){
+      return this.$store.getters.isAuth
+    }
   }
 };
 </script>

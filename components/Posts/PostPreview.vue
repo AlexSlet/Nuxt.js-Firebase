@@ -49,6 +49,13 @@ export default {
   box-shadow: 0 2px 2px #ccc;
   background-color: white;
   width: 90%;
+  min-height: 350px;
+  overflow: hidden;
+  transition: 0.3s;
+}
+.post-preview:hover{
+    background-color: #ccc;
+    transform: scale(1.1);
 }
 
 a {
@@ -68,15 +75,11 @@ a {
   height: 200px;
   background-position: center;
   background-size: cover;
+  transition: 0.3s;
 }
 
 .post-content {
   padding: 10px;
   text-align: center;
-}
-
-a:hover .post-content,
-a:active .post-content {
-  background-color: #ccc;
 }
 </style>
