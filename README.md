@@ -2,6 +2,8 @@
 
 > My remarkable Nuxt.js project
 
+https://my-first-nuxt-app-ufoprlnblc.now.sh/
+
 ## Build Setup
 
 ``` bash
